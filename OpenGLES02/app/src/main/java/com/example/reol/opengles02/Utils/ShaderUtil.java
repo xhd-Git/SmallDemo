@@ -14,7 +14,6 @@ public class ShaderUtil {
 
     public static String loadShaderCodeFromAssets(Context context, String fileName){
         String result = null;
-
         try {
             InputStream in = context.getResources().getAssets().open(fileName);
             int ch;
@@ -31,4 +30,6 @@ public class ShaderUtil {
         }
         return result;
     }
+
+
 }

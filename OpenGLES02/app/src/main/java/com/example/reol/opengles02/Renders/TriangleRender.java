@@ -15,7 +15,7 @@ import static android.opengl.Matrix.*;
  * Created by reol on 2017/3/15.
  */
 
-public class CommonRender implements GLSurfaceView.Renderer {
+public class TriangleRender implements GLSurfaceView.Renderer {
 
     private FloatBuffer mVertexBuffer;
     private String mVertexShader;
@@ -23,9 +23,9 @@ public class CommonRender implements GLSurfaceView.Renderer {
 
     private int mProgram;
     private int mPositionHandle;
+    private int mColorHandle;
 
-    public CommonRender(FloatBuffer vertexBuffer, String vertexShader, String fragShader) {
-        mVertexBuffer = vertexBuffer;
+    public TriangleRender(String vertexShader, String fragShader) {
         mVertexShader = vertexShader;
         mFragShader = fragShader;
     }
@@ -54,10 +54,9 @@ public class CommonRender implements GLSurfaceView.Renderer {
         glUseProgram(mProgram);
 
         glEnableVertexAttribArray(mPositionHandle);
-
         glVertexAttribPointer(mPositionHandle,3,GL_FLOAT,false,12,mVertexBuffer);
 
-        glDrawArrays(GL_TRIANGLE_STRIP,0,36);
+        glDrawArrays(GL_TRIANGLE_STRIP,0,3);
 
         glDisableVertexAttribArray(mPositionHandle);
     }

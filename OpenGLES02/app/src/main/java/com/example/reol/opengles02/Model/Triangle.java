@@ -10,6 +10,9 @@ import java.nio.FloatBuffer;
 
 public class Triangle {
     private float[] vertex;
+    private float[] color = {
+            1.0f, 1.0f, 1.0f, 1.0f
+    };
     public static float[] TRIANGLE_DEFAULT = {   // in counterclockwise order
             0.0f, 0.5f, 0.0f, // top
             -0.5f, -0.5f, 0.0f, // bottom left
@@ -34,6 +37,16 @@ public class Triangle {
                 .order(ByteOrder.nativeOrder())
                 .asFloatBuffer()
                 .put(vertex);
+        buffer.position(0);
+        return buffer;
+    }
+
+    public FloatBuffer getColorBuffer(){
+        FloatBuffer buffer;
+        buffer = ByteBuffer.allocateDirect(color.length * 4)
+                .order(ByteOrder.nativeOrder())
+                .asFloatBuffer()
+                .put(color);
         buffer.position(0);
         return buffer;
     }
